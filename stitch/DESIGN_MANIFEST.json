@@ -1,0 +1,24 @@
+[
+  {
+    "screenId": "060dd300b1a74e54825648196a44719e",
+    "title": "Game Settings - WingLoop Lite FixCheck",
+    "htmlFile": "060dd300b1a74e54825648196a44719e.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2NlNDhlYjhlYzFmOTQ4MzE5OWE2MmQxYmQzMjY0NjBjEgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxMjY3OTMyMjIyMTIyMTg3NDU5Nw&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/wingloop-lite-fixcheck-afc884b3/stitch/060dd300b1a74e54825648196a44719e.html",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  },
+  {
+    "screenId": "961437795ce94eae89b504515581a2a1",
+    "title": "Gameplay - WingLoop Lite FixCheck",
+    "htmlFile": "961437795ce94eae89b504515581a2a1.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzEzZmRkMWRiOWM4YTRiNjk4NzEwMDNlZTBiYzNlMjNjEgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxMjY3OTMyMjIyMTIyMTg3NDU5Nw&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/wingloop-lite-fixcheck-afc884b3/stitch/961437795ce94eae89b504515581a2a1.html",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  }
+]

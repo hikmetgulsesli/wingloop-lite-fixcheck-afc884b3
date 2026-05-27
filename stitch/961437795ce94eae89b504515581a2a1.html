@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WingLoop Lite - Gameplay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&amp;family=Plus+Jakarta+Sans:wght@500&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#212b39",
+                      "surface-tint": "#adc6ff",
+                      "background": "#091421",
+                      "on-primary-fixed": "#001a42",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "on-primary-fixed-variant": "#004395",
+                      "surface-container-highest": "#2b3544",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#050f1c",
+                      "on-tertiary-fixed": "#2a1700",
+                      "on-background": "#d9e3f6",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-surface": "#d9e3f6",
+                      "secondary-container": "#00a572",
+                      "tertiary": "#ffb95f",
+                      "tertiary-container": "#ca8100",
+                      "inverse-primary": "#005ac2",
+                      "secondary": "#4edea3",
+                      "outline-variant": "#424754",
+                      "surface": "#091421",
+                      "outline": "#8c909f",
+                      "on-secondary-container": "#00311f",
+                      "inverse-surface": "#d9e3f6",
+                      "error": "#ffb4ab",
+                      "on-primary-container": "#00285d",
+                      "primary": "#adc6ff",
+                      "primary-container": "#4d8eff",
+                      "on-surface-variant": "#c2c6d6",
+                      "secondary-fixed-dim": "#4edea3",
+                      "surface-dim": "#091421",
+                      "surface-container-low": "#121c2a",
+                      "inverse-on-surface": "#27313f",
+                      "on-primary": "#002e6a",
+                      "surface-variant": "#2b3544",
+                      "on-secondary-fixed": "#002113",
+                      "primary-fixed": "#d8e2ff",
+                      "on-error": "#690005",
+                      "surface-container": "#16202e",
+                      "on-tertiary": "#472a00",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-secondary-fixed-variant": "#005236",
+                      "on-tertiary-container": "#3e2400",
+                      "secondary-fixed": "#6ffbbe",
+                      "primary-fixed-dim": "#adc6ff",
+                      "on-secondary": "#003824",
+                      "surface-bright": "#303a48"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "element-gap": "16px",
+                      "container-padding": "24px",
+                      "unit": "8px",
+                      "safe-margin": "32px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-score": [
+                              "Space Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Space Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-score": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-mono": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .glow-effect {
+            box-shadow: 0 4px 20px rgba(173, 198, 255, 0.3);
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 185, 95, 0.5);
+        }
+        .scrolling-bg {
+            background-size: cover;
+            background-position: center;
+            animation: scroll-bg 20s linear infinite;
+        }
+        @keyframes scroll-bg {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+        .pulse {
+            animation: pulse-anim 2s infinite;
+        }
+        @keyframes pulse-anim {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .hover-press:active {
+            transform: translateY(2px);
+            border-bottom-width: 0;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface h-screen w-screen overflow-hidden flex flex-col font-body-md">
+<!-- TopAppBar (From JSON) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding py-unit bg-surface/50 backdrop-blur-md border-b border-white/10">
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-surface-tint italic tracking-tighter md:font-headline-lg md:text-headline-lg">WingLoop Lite</div>
+<div class="flex items-center gap-element-gap">
+<div class="bg-black/50 border border-primary px-3 py-1 rounded flex items-center">
+<span class="font-label-mono text-label-mono text-primary">HI: 0000</span>
+</div>
+<button class="text-tertiary hover:bg-surface-container-highest transition-colors rounded-full p-2 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile, Visible on Desktop as per rules, though usually suppressed for purely transactional game screens. Since this is a dedicated gameplay screen, we'll keep it minimal or suppress it. Let's suppress it to maximize canvas as per the "Dead end/Focus" rule). -->
+<!-- Main Gameplay Area -->
+<main class="flex-grow relative mt-[56px] md:mt-[72px] bg-surface-container-low overflow-hidden">
+<!-- Scrolling Background -->
+<div class="absolute inset-0 scrolling-bg z-0 opacity-40" data-alt="A stylized, neon-lit cyberpunk cityscape rendered in 8-bit or pixel art style. The scene is set at night with deep blacks and vibrant electric blues, neon pinks, and glowing cyan accents. Tall skyscrapers stretch into a dark sky, illuminated by glowing signs and flying vehicles. The aesthetic is modern-retro arcade, capturing a sense of speed and digital energy." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXggqjeV-chiwyB-41mLqSjMVCNYH11U1PeTjxqRGVCA8xsFsj5E_PiwWvMFMlTWC8uc2Mqj5UzVEPUtVc-JjjgJE38eHdyaAv3O6u_87uYqYp-HVMGcdAcYJi555ZdnO_TcP1GlCuAmzgi_Za1_BOS3RuGFqPHF07k_C47vUsZVBkDpbI9F4nXTniBR7j1lOajrjetxjMvrefDMG0R27OxqWrTyOxxzblLomutHvQWQIIe5hSVws_yZ48UUTgioR_uu4MXJwQhFMj');">
+</div>
+<!-- Gameplay Canvas -->
+<div class="absolute inset-0 z-10 flex flex-col items-center justify-between py-safe-margin px-container-padding">
+<!-- HUD: Score -->
+<div class="w-full flex justify-center mt-8">
+<h1 class="font-display-score text-display-score text-tertiary text-glow z-20 relative">0</h1>
+</div>
+<!-- Center Action Area (Initial State) -->
+<div class="flex flex-col items-center justify-center space-y-8 z-30" id="start-overlay">
+<!-- Floating Character Placeholder -->
+<div class="w-16 h-16 bg-secondary rounded-lg pulse glow-effect border border-white/20 relative shadow-xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-background text-3xl" style="font-variation-settings: 'FILL' 1;">flight</span>
+</div>
+<div class="text-center space-y-4">
+<p class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">Tap or Space to Start</p>
+<button class="bg-primary text-on-primary-fixed font-bold font-body-md text-body-md px-8 py-4 rounded-lg border-b-4 border-on-primary-fixed-variant hover:bg-primary-fixed transition-colors hover-press glow-effect w-full max-w-[200px] mx-auto block min-h-[48px]" id="btn-start">
+                        Start Game
+                    </button>
+</div>
+</div>
+<!-- Keyboard Hints (Desktop Only) -->
+<div class="w-full flex justify-between text-on-surface-variant/50 font-label-mono text-label-mono pb-4 hidden md:flex z-20">
+<span>[Space] to Flap</span>
+<span>[P] to Pause</span>
+</div>
+</div>
+<!-- Game Over Overlay (Hidden by Default) -->
+<div class="absolute inset-0 bg-background/80 backdrop-blur-sm z-40 hidden flex items-center justify-center p-container-padding" id="game-over-overlay">
+<div class="bg-surface-variant border-4 border-error p-8 rounded-xl max-w-sm w-full text-center shadow-2xl transform scale-95 transition-transform duration-300" id="game-over-card">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-error mb-2">CRASHED!</h2>
+<div class="font-display-score text-display-score text-tertiary text-glow mb-6">42</div>
+<div class="flex gap-4 justify-center">
+<div class="bg-black/50 border border-primary px-4 py-2 rounded flex flex-col items-center">
+<span class="font-label-mono text-[10px] text-on-surface-variant">HIGH SCORE</span>
+<span class="font-label-mono text-label-mono text-primary mt-1">104</span>
+</div>
+</div>
+<button class="mt-8 bg-error text-on-error font-bold font-body-md text-body-md px-8 py-4 rounded-lg border-b-4 border-error-container hover:bg-error-container hover:text-error transition-colors hover-press w-full min-h-[48px] pulse" id="btn-restart">
+                    Retry
+                </button>
+</div>
+</div>
+</main>
+<script>
+        // Minimal interaction logic for demonstration
+        const startBtn = document.getElementById('btn-start');
+        const startOverlay = document.getElementById('start-overlay');
+        const gameOverOverlay = document.getElementById('game-over-overlay');
+        const restartBtn = document.getElementById('btn-restart');
+        const gameOverCard = document.getElementById('game-over-card');
+
+        // Simulate Game Start
+        startBtn.addEventListener('click', () => {
+            startOverlay.classList.add('hidden');
+            // Simulate gameplay for a few seconds then show Game Over
+            setTimeout(() => {
+                showGameOver();
+            }, 3000);
+        });
+
+        function showGameOver() {
+            gameOverOverlay.classList.remove('hidden');
+            gameOverOverlay.classList.add('flex');
+            setTimeout(() => {
+                gameOverCard.classList.remove('scale-95');
+                gameOverCard.classList.add('scale-100');
+            }, 50);
+        }
+
+        // Simulate Restart
+        restartBtn.addEventListener('click', () => {
+            gameOverOverlay.classList.add('hidden');
+            gameOverOverlay.classList.remove('flex');
+            gameOverCard.classList.add('scale-95');
+            gameOverCard.classList.remove('scale-100');
+            startOverlay.classList.remove('hidden');
+        });
+
+        // Spacebar interaction
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && !startOverlay.classList.contains('hidden')) {
+                startBtn.click();
+            }
+        });
+    </script>
+</body></html>

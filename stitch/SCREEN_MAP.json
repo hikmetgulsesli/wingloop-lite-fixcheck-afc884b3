@@ -1,0 +1,20 @@
+[
+  {
+    "screenId": "060dd300b1a74e54825648196a44719e",
+    "name": "Game Settings - WingLoop Lite FixCheck",
+    "type": "settings",
+    "description": "Game Settings - WingLoop Lite FixCheck screen",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  },
+  {
+    "screenId": "961437795ce94eae89b504515581a2a1",
+    "name": "Gameplay - WingLoop Lite FixCheck",
+    "type": "game",
+    "description": "Gameplay - WingLoop Lite FixCheck screen",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  }
+]
