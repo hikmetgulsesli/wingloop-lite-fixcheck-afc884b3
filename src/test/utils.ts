@@ -1,0 +1,109 @@
+import { describe, expect, it, vi } from 'vitest';
+import { act, fireEvent, render } from '@testing-library/react';
+import { createElement } from 'react';
+import App from '../App';
+import { createWingloopStore, wingloopStore } from '../features/wingloop-lite-fixcheck/wingloop-lite-fixcheck.store';
+import type { WingloopPersistedState, WingloopRepository } from '../features/wingloop-lite-fixcheck/wingloop-lite-fixcheck.repo';
+import { installWingloopTestBridge } from './bridge';
+
+function createMemoryRepository(): WingloopRepository {
+  let persisted: WingloopPersistedState | undefined;
+
+  return {
+    load: () => ({ data: persisted, recovered: false }),
+    save: (data) => {
+      persisted = data;
+    },
+    clear: () => {
+      persisted = undefined;
+    },
+  };
+}
+
+function resetSharedAppStore() {
+  wingloopStore.actions.retry();
+  wingloopStore.actions.pauseGame();
+}
+
+describe('wingloop gameplay controls', () => {
+  it('pauses, resumes, and ticks only while gameplay is active', () => {
+    const store = createWingloopStore(createMemoryRepository());
+    const listener = vi.fn();
+
+    store.subscribe(listener);
+    store.actions.tick();
+    expect(store.getState().score).toBe(0);
+    expect(listener).not.toHaveBeenCalled();
+
+    store.actions.resumeGame();
+    expect(store.getState().paused).toBe(false);
+
+    store.actions.tick();
+    expect(store.getState().score).toBe(24);
+    expect(store.getState().progress).toBe(40);
+
+    store.actions.pauseGame();
+    const pausedScore = store.getState().score;
+    store.actions.tick();
+    expect(store.getState().score).toBe(pausedScore);
+
+    store.actions.navigate('settings');
+    store.actions.resumeGame();
+    store.actions.tick();
+    expect(store.getState().score).toBe(pausedScore);
+  });
+
+  it('exposes the gameplay controls through the window bridge', () => {
+    const store = createWingloopStore(createMemoryRepository());
+    const bridge = installWingloopTestBridge(store);
+
+    bridge?.actions.resumeGame();
+    bridge?.actions.tick();
+    expect(window.app?.state.score).toBe(24);
+
+    bridge?.actions.pauseGame();
+    bridge?.actions.tick();
+    expect(window.app?.getState().score).toBe(24);
+  });
+
+  it('wires keyboard and pointer controls through the app shell only while active', () => {
+    resetSharedAppStore();
+    const { container } = render(createElement(App));
+    const root = container.querySelector('[data-setfarm-root="wingloop-lite-fixcheck"]');
+
+    expect(root).toBeInstanceOf(HTMLElement);
+    expect(root).toHaveAttribute('data-game-active', 'false');
+
+    fireEvent.keyDown(root as HTMLElement, { key: ' ' });
+    expect(root).toHaveAttribute('data-game-active', 'true');
+
+    fireEvent.click(root as HTMLElement);
+    expect(window.app?.state.score).toBe(24);
+
+    fireEvent.keyDown(root as HTMLElement, { key: ' ' });
+    expect(root).toHaveAttribute('data-game-active', 'false');
+
+    fireEvent.click(root as HTMLElement);
+    expect(window.app?.state.score).toBe(24);
+  });
+
+  it('advances through the app game loop while active and stops after pause', () => {
+    vi.useFakeTimers();
+    resetSharedAppStore();
+    const { container } = render(createElement(App));
+    const root = container.querySelector('[data-setfarm-root="wingloop-lite-fixcheck"]');
+
+    fireEvent.keyDown(root as HTMLElement, { key: ' ' });
+    act(() => {
+      vi.advanceTimersByTime(1000);
+    });
+    expect(window.app?.state.score).toBe(24);
+
+    fireEvent.keyDown(root as HTMLElement, { key: ' ' });
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
+    expect(window.app?.state.score).toBe(24);
+    vi.useRealTimers();
+  });
+});

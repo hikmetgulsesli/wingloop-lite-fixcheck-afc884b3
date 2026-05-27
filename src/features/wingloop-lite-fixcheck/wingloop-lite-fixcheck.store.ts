@@ -14,6 +14,9 @@ type Listener = () => void;
 export interface WingloopActions {
   navigate(screen: WingloopScreen): void;
   startGame(): void;
+  pauseGame(): void;
+  resumeGame(): void;
+  tick(): void;
   retry(): void;
   setDifficulty(difficulty: GameDifficulty): void;
   setSpeed(speed: GameSpeed): void;
@@ -69,7 +72,28 @@ export function createWingloopStore(repository: WingloopRepository = createWingl
       setState({ ...state, screen, lastError: null });
     },
     startGame() {
-      setState(advanceWingloopTurn({ ...state, paused: false }), true);
+      actions.resumeGame();
+    },
+    pauseGame() {
+      if (state.paused || state.gameOver) {
+        return;
+      }
+
+      setState({ ...state, paused: true, lastError: null });
+    },
+    resumeGame() {
+      if (!state.paused || state.gameOver) {
+        return;
+      }
+
+      setState({ ...state, paused: false, lastError: null });
+    },
+    tick() {
+      if (state.screen !== 'gameplay' || state.paused || state.gameOver) {
+        return;
+      }
+
+      setState(advanceWingloopTurn(state), true);
     },
     retry() {
       setState(
