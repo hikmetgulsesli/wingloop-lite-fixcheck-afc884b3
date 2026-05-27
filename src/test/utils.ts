@@ -87,6 +87,24 @@ describe('wingloop gameplay controls', () => {
     expect(window.app?.state.score).toBe(24);
   });
 
+  it('ignores gameplay keyboard controls outside the gameplay screen', () => {
+    resetSharedAppStore();
+    const { container } = render(createElement(App));
+    const root = container.querySelector('[data-setfarm-root="wingloop-lite-fixcheck"]');
+
+    act(() => {
+      wingloopStore.actions.navigate('settings');
+    });
+    expect(window.app?.state.screen).toBe('settings');
+    expect(window.app?.state.paused).toBe(true);
+
+    fireEvent.keyDown(root as HTMLElement, { key: ' ' });
+    expect(window.app?.state.paused).toBe(true);
+
+    fireEvent.keyDown(root as HTMLElement, { key: 'Enter' });
+    expect(window.app?.state.score).toBe(0);
+  });
+
   it('advances through the app game loop while active and stops after pause', () => {
     vi.useFakeTimers();
     resetSharedAppStore();

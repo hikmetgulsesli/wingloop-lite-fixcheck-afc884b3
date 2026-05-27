@@ -38,6 +38,10 @@ export default function App() {
 
   const handleRootKeyDown = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
+      if (state.screen !== 'gameplay' || state.gameOver) {
+        return;
+      }
+
       if (event.key === ' ' || event.key === 'Spacebar') {
         event.preventDefault();
         if (state.paused) {
@@ -53,7 +57,7 @@ export default function App() {
         handleGameplayTick();
       }
     },
-    [actions, handleGameplayTick, state.paused],
+    [actions, handleGameplayTick, state.gameOver, state.paused, state.screen],
   );
 
   const isInteractiveEventTarget = (target: EventTarget | null) =>
