@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { act, fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { createElement } from 'react';
 import App from '../App';
 import { createWingloopStore, wingloopStore } from '../features/wingloop-lite-fixcheck/wingloop-lite-fixcheck.store';
@@ -85,6 +85,33 @@ describe('wingloop gameplay controls', () => {
 
     fireEvent.click(root as HTMLElement);
     expect(window.app?.state.score).toBe(24);
+  });
+
+  it('renders deterministic gameplay feedback for start, crash, and retry', () => {
+    resetSharedAppStore();
+    const { container } = render(createElement(App));
+    const root = container.querySelector('[data-setfarm-root="wingloop-lite-fixcheck"]');
+    const gameplay = screen.getByRole('main');
+
+    expect(gameplay).toHaveAttribute('data-game-state', 'paused');
+    expect(gameplay).toHaveAttribute('data-score', '0');
+
+    fireEvent.click(screen.getByRole('button', { name: /start game/i }));
+    expect(root).toHaveAttribute('data-game-active', 'true');
+    expect(gameplay).toHaveAttribute('data-game-state', 'playing');
+
+    fireEvent.click(root as HTMLElement);
+    expect(gameplay).toHaveAttribute('data-score', '24');
+    expect(gameplay).toHaveAttribute('data-progress', '40');
+
+    fireEvent.click(root as HTMLElement);
+    fireEvent.click(root as HTMLElement);
+    expect(gameplay).toHaveAttribute('data-game-state', 'game-over');
+    expect(screen.getByText('CRASHED!')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: /retry/i }));
+    expect(gameplay).toHaveAttribute('data-game-state', 'playing');
+    expect(gameplay).toHaveAttribute('data-score', '0');
   });
 
   it('ignores gameplay keyboard controls outside the gameplay screen', () => {
