@@ -1,0 +1,108 @@
+[
+  {
+    "screenId": "060dd300b1a74e54825648196a44719e",
+    "title": "Game Settings - WingLoop Lite FixCheck",
+    "componentName": "GameSettingsWingloopLiteFixcheck",
+    "file": "src/screens/GameSettingsWingloopLiteFixcheck.tsx",
+    "buttons": 11,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "easy-1",
+        "kind": "button",
+        "label": "Easy",
+        "index": 0
+      },
+      {
+        "id": "normal-2",
+        "kind": "button",
+        "label": "Normal",
+        "index": 1
+      },
+      {
+        "id": "hard-3",
+        "kind": "button",
+        "label": "Hard",
+        "index": 2
+      },
+      {
+        "id": "slow-4",
+        "kind": "button",
+        "label": "Slow",
+        "index": 3
+      },
+      {
+        "id": "normal-5",
+        "kind": "button",
+        "label": "Normal",
+        "index": 4
+      },
+      {
+        "id": "fast-6",
+        "kind": "button",
+        "label": "Fast",
+        "index": 5
+      },
+      {
+        "id": "button-7-7",
+        "kind": "button",
+        "label": "Button 7",
+        "index": 6
+      },
+      {
+        "id": "button-8-8",
+        "kind": "button",
+        "label": "Button 8",
+        "index": 7
+      },
+      {
+        "id": "reset-high-score-9",
+        "kind": "button",
+        "label": "Reset High Score",
+        "index": 8
+      },
+      {
+        "id": "save-settings-10",
+        "kind": "button",
+        "label": "Save Settings",
+        "index": 9
+      },
+      {
+        "id": "back-to-game-11",
+        "kind": "button",
+        "label": "Back to Game",
+        "index": 10
+      }
+    ]
+  },
+  {
+    "screenId": "961437795ce94eae89b504515581a2a1",
+    "title": "Gameplay - WingLoop Lite FixCheck",
+    "componentName": "GameplayWingloopLiteFixcheck",
+    "file": "src/screens/GameplayWingloopLiteFixcheck.tsx",
+    "buttons": 3,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "settings-1",
+        "kind": "button",
+        "label": "Settings",
+        "index": 0
+      },
+      {
+        "id": "start-game-2",
+        "kind": "button",
+        "label": "Start Game",
+        "index": 1
+      },
+      {
+        "id": "retry-3",
+        "kind": "button",
+        "label": "Retry",
+        "index": 2
+      }
+    ]
+  }
+]

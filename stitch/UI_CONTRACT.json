@@ -1,0 +1,152 @@
+[
+  {
+    "screenId": "060dd300b1a74e54825648196a44719e",
+    "screenTitle": "Game Settings - WingLoop Lite FixCheck",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Easy",
+        "line": 143
+      },
+      {
+        "type": "button",
+        "label": "Normal",
+        "line": 144
+      },
+      {
+        "type": "button",
+        "label": "Hard",
+        "line": 145
+      },
+      {
+        "type": "button",
+        "label": "Slow",
+        "line": 152
+      },
+      {
+        "type": "button",
+        "label": "Normal",
+        "line": 153
+      },
+      {
+        "type": "button",
+        "label": "Fast",
+        "line": 154
+      },
+      {
+        "type": "button",
+        "label": "Reset High Score",
+        "line": 197
+      },
+      {
+        "type": "button",
+        "label": "Save Settings",
+        "line": 204
+      },
+      {
+        "type": "button",
+        "label": "Back to Game",
+        "line": 207
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Easy",
+        "line": 143
+      },
+      {
+        "type": "button",
+        "label": "Normal",
+        "line": 144
+      },
+      {
+        "type": "button",
+        "label": "Hard",
+        "line": 145
+      },
+      {
+        "type": "button",
+        "label": "Slow",
+        "line": 152
+      },
+      {
+        "type": "button",
+        "label": "Normal",
+        "line": 153
+      },
+      {
+        "type": "button",
+        "label": "Fast",
+        "line": 154
+      },
+      {
+        "type": "button",
+        "label": "Reset High Score",
+        "line": 197
+      },
+      {
+        "type": "button",
+        "label": "Save Settings",
+        "line": 204
+      },
+      {
+        "type": "button",
+        "label": "Back to Game",
+        "line": 207
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 9,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "961437795ce94eae89b504515581a2a1",
+    "screenTitle": "Gameplay - WingLoop Lite FixCheck",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 178
+      },
+      {
+        "type": "button",
+        "label": "Start Game",
+        "line": 203
+      },
+      {
+        "type": "button",
+        "label": "Retry",
+        "line": 225
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 178
+      },
+      {
+        "type": "button",
+        "label": "Start Game",
+        "line": 203
+      },
+      {
+        "type": "button",
+        "label": "Retry",
+        "line": 225
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 3,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
