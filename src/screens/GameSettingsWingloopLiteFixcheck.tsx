@@ -55,7 +55,7 @@ export function GameSettingsWingloopLiteFixcheck({ actions }: GameSettingsWinglo
       <Music className="text-primary" aria-hidden={true} focusable="false" />
       <span className="font-body-md text-body-md">Music</span>
       </div>
-      <button aria-pressed="true" className="w-12 h-6 rounded-full bg-primary relative transition-colors focus:outline-none" type="button" aria-label="Button 7" data-action-id="button-7-7" onClick={actions?.["button-7-7"]}>
+      <button aria-pressed="true" disabled className="w-12 h-6 rounded-full bg-primary relative transition-colors focus:outline-none" type="button" aria-label="Button 7" data-action-id="button-7-7" onClick={actions?.["button-7-7"]}>
       <div className="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full transition-transform"></div>
       </button>
       </div>
@@ -64,7 +64,7 @@ export function GameSettingsWingloopLiteFixcheck({ actions }: GameSettingsWinglo
       <Volume2 className="text-primary" aria-hidden={true} focusable="false" />
       <span className="font-body-md text-body-md">SFX</span>
       </div>
-      <button aria-pressed="true" className="w-12 h-6 rounded-full bg-primary relative transition-colors focus:outline-none" type="button" aria-label="Button 8" data-action-id="button-8-8" onClick={actions?.["button-8-8"]}>
+      <button aria-pressed="true" disabled className="w-12 h-6 rounded-full bg-primary relative transition-colors focus:outline-none" type="button" aria-label="Button 8" data-action-id="button-8-8" onClick={actions?.["button-8-8"]}>
       <div className="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full transition-transform"></div>
       </button>
       </div>

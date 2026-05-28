@@ -7,9 +7,8 @@ import {
 } from './screens';
 import { installWingloopTestBridge } from './test/bridge';
 import { useWingloopStore, wingloopStore } from './features/wingloop-lite-fixcheck/wingloop-lite-fixcheck.store';
-import { actPauseGame } from './features/surf-gameplay/act_pause_game';
-import { actRestartGame } from './features/surf-gameplay/act_restart_game';
-import { actStartGame } from './features/surf-gameplay/act_start_game';
+import { actReturnToGameplay } from './features/surf-game-settings/act_return_to_gameplay';
+import { actSavePreferences } from './features/surf-game-settings/act_save_preferences';
 
 export default function App() {
   const state = useWingloopStore();
@@ -47,7 +46,11 @@ export default function App() {
 
       if (event.key === ' ' || event.key === 'Spacebar') {
         event.preventDefault();
-        actPauseGame(actions, state.paused);
+        if (state.paused) {
+          actions.resumeGame();
+        } else {
+          actions.pauseGame();
+        }
         return;
       }
 
@@ -82,8 +85,8 @@ export default function App() {
 
   const gameplayActions: Partial<Record<GameplayWingloopLiteFixcheckActionId, () => void>> = {
     'settings-1': () => actions.navigate('settings'),
-    'start-game-2': () => actStartGame(actions),
-    'retry-3': () => actRestartGame(actions),
+    'start-game-2': actions.startGame,
+    'retry-3': actions.retry,
   };
 
   const settingsActions: Partial<Record<GameSettingsWingloopLiteFixcheckActionId, () => void>> = {
@@ -94,8 +97,8 @@ export default function App() {
     'normal-5': () => actions.setSpeed('normal'),
     'fast-6': () => actions.setSpeed('fast'),
     'reset-high-score-9': actions.resetHighScore,
-    'save-settings-10': actions.saveSettings,
-    'back-to-game-11': () => actions.navigate('gameplay'),
+    'save-settings-10': () => actSavePreferences(actions),
+    'back-to-game-11': () => actReturnToGameplay(actions),
   };
 
   return (
