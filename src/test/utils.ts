@@ -72,6 +72,7 @@ describe('wingloop gameplay controls', () => {
     const root = container.querySelector('[data-setfarm-root="wingloop-lite-fixcheck"]');
 
     expect(root).toBeInstanceOf(HTMLElement);
+    expect(root).toHaveClass('flex', 'flex-col');
     expect(root).toHaveAttribute('data-game-active', 'false');
 
     fireEvent.keyDown(root as HTMLElement, { key: ' ' });

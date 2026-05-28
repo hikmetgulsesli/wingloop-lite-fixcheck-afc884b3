@@ -104,7 +104,7 @@ export default function App() {
       data-screen={state.screen}
       data-storage-status={state.storageStatus}
       data-game-active={gameplayActive ? 'true' : 'false'}
-      className="min-h-screen bg-background text-on-surface"
+      className="min-h-screen bg-background text-on-surface flex flex-col"
       tabIndex={0}
       onKeyDown={handleRootKeyDown}
       onClick={handleRootClick}
