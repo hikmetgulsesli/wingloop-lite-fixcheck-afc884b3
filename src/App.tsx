@@ -7,6 +7,9 @@ import {
 } from './screens';
 import { installWingloopTestBridge } from './test/bridge';
 import { useWingloopStore, wingloopStore } from './features/wingloop-lite-fixcheck/wingloop-lite-fixcheck.store';
+import { actPauseGame } from './features/surf-gameplay/act_pause_game';
+import { actRestartGame } from './features/surf-gameplay/act_restart_game';
+import { actStartGame } from './features/surf-gameplay/act_start_game';
 
 export default function App() {
   const state = useWingloopStore();
@@ -44,11 +47,7 @@ export default function App() {
 
       if (event.key === ' ' || event.key === 'Spacebar') {
         event.preventDefault();
-        if (state.paused) {
-          actions.resumeGame();
-        } else {
-          actions.pauseGame();
-        }
+        actPauseGame(actions, state.paused);
         return;
       }
 
@@ -83,8 +82,8 @@ export default function App() {
 
   const gameplayActions: Partial<Record<GameplayWingloopLiteFixcheckActionId, () => void>> = {
     'settings-1': () => actions.navigate('settings'),
-    'start-game-2': actions.startGame,
-    'retry-3': actions.retry,
+    'start-game-2': () => actStartGame(actions),
+    'retry-3': () => actRestartGame(actions),
   };
 
   const settingsActions: Partial<Record<GameSettingsWingloopLiteFixcheckActionId, () => void>> = {
@@ -105,7 +104,7 @@ export default function App() {
       data-screen={state.screen}
       data-storage-status={state.storageStatus}
       data-game-active={gameplayActive ? 'true' : 'false'}
-      className="min-h-screen bg-background text-on-surface"
+      className="min-h-screen bg-background text-on-surface flex flex-col"
       tabIndex={0}
       onKeyDown={handleRootKeyDown}
       onClick={handleRootClick}
@@ -119,7 +118,7 @@ export default function App() {
       {state.screen === 'settings' ? (
         <GameSettingsWingloopLiteFixcheck actions={settingsActions} />
       ) : (
-        <GameplayWingloopLiteFixcheck actions={gameplayActions} />
+        <GameplayWingloopLiteFixcheck actions={gameplayActions} gameState={state} />
       )}
     </div>
   );
